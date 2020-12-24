@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @post.name %>
+</p>
+
+<p>
+  <strong>Thumbnail:</strong>
+  <%= @post.thumbnail %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @post.price %>
+</p>
+
+<p>
+  <strong>Introduction:</strong>
+  <%= @post.introduction %>
+</p>
+
+<h1>Chat room</h1>
+<div id='messages'>
+  <%# <%= @profile.use_id %> 
+  <%= render @messages %>
+  
+  <%# render @messagesとは、render partial: 'messages/message', collection: @messagesの略 %>
+  <%# メッセージ毎にmessagesフォルダの_message.html.erbというパーシャルが適用される %>
+</div>
+
+
+<%= label_tag :content, 'Say something:' %>
+<%# text_field_tag(テキストボックス名, 初期文字列, {オプション1, オプション2,,,}) %>        <%#=  ↓ current_user.idでいけた。  %>
+<%= text_field_tag :content, nil,  {:class => "", "data-behavior" => "post_speaker", "data-user_id" => @profile.user_id, "data-post_id" => @post.id} %>
+<%# この上のとこclass以下何やっとるん？ %>                                        <%#=  ↑ posts_controller.rbに@profile = Profile.find_by(:user_id => current_user.id)を作ることで"data-user_id" => @profile.user_idを実現   %>
+<%# inputタグの属性と値を書いている。data-behavior属性にpost_speakerという値を持たせてjsの$(document).on ...で指定している。 %>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
