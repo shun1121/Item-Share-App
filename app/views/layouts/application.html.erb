@@ -4,14 +4,19 @@
     <title>ItemShareApp2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%# <link rel="stylesheet" href="assets/stylesheets/profiles.scss"> %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="container">
+      <p class="notice" style="text-align:center; color:blue; margin-top:40px;"><%= notice %></p>
+      <p class="alert" style="text-align:center; color:red"><%= alert %></p>
+      <% if user_signed_in? %>
+        <%= link_to image_tag("flexsens_logo.png", width:'170px', height:'70px'), profiles_path %>
+      <% end %>
+      <%= yield %>
+    </div>  
   </body>
 </html>

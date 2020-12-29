@@ -1,14 +1,20 @@
-<h1>ログインアプリ</h1>
-
 <% if user_signed_in? %> <!-- ユーザーがログインしているか調べる -->
   <!-- ユーザーがログインしていた時の処理 -->
-
-  <h4> メールアドレス： <%= current_user.email %> </h4>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> <!-- ログアウトをする -->
-  <%= link_to 'プロフィールへ', new_profile_path %>
+    <span style="float:right"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-danger text-white border-danger' %></span><br><br>
+    <hr>
+    <br>
+    <div>
+      <h1> メールアドレス： <%= current_user.email %> さんがログインしています。</h1><br>
+      <div style="text-align:center;">
+        <%= link_to 'プロフィール作成', new_profile_path, class: 'btn btn-light border-info text-info' %>
+        <%= link_to 'プロフィール一覧', profiles_path, class: 'btn btn-light border-primary text-primary' %>
+      </div>
+    </div>
 <% else %>
-  <!-- ユーザーがログインしていなかった時の処理 -->
-  <h2> 現在ログインしていません </h2>
-  <%= link_to "ログイン", new_user_session_path, class: 'post' %> <!-- ログイン画面に移行する -->
-  <%= link_to "新規登録", new_user_registration_path, class: 'post' %> <!-- 新規登録画面に移行する -->
+    <!-- ユーザーがログインしていなかった時の処理 -->
+    <h2 style="text-align:center;"> 現在ログインしていません。 </h2><br>
+    <div style="text-align:center;">
+      <%= link_to "ログイン", new_user_session_path, class: 'post btn btn-light border-primary text-primary' %> <!-- ログイン画面に移行する -->
+      <%= link_to "新規登録", new_user_registration_path, class: 'post btn btn-light border-success text-success' %> <!-- 新規登録画面に移行する -->
+    </div>
 <% end %>

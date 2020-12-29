@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :messages
+  resources :texts
+  # resources :messages
   resources :posts
   resources :profiles
   devise_for :users

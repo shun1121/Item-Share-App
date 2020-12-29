@@ -1,5 +1,13 @@
-<h1>New Post</h1>
+<div style="float:right;"><%= link_to '戻る', profiles_path, class: 'btn btn-light border text-primary' %></div>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="card col-sm-5 mx-auto mt-5">
+      <div class="card-body">
+        <h1 style="text-align:center;">商品投稿</h1>
+        <%= render 'form', post: @post %>
+      </div>
+    </div>    
+  </div>
+</div> 
 
-<%= render 'form', post: @post %>
-
-<%= link_to 'Back', posts_path %>

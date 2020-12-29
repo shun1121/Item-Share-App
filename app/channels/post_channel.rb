@@ -1,5 +1,5 @@
 class PostChannel < ApplicationCable::Channel
-  # before_action :set_message, only: [:speak]
+  # before_action :set_text, only: [:speak]
   def subscribed
     
     stream_from "post_channel#{params['post']}"
@@ -11,23 +11,21 @@ class PostChannel < ApplicationCable::Channel
 
   def speak(data)
     print("=========")
-    print(data) #{"message"=>{"message"=>"eeeeeeeee", "user_id"=>"1"}, "action"=>"speak"}が取れる
+    print(data) #{"text"=>{"text"=>"eeeeeeeee", "user_id"=>"1"}, "action"=>"speak"}が取れる
     #つまりpost_channel.jsの$(document).on ...のobjが同ファイルのspeak関数を通ってここにきた。
-    print("=========")
-    params['post']
-    #_message.html.erbで表示される内容に関係する。
-    Message.create! content: data['message']['message'], user_id: data['message']['user_id'], post_id: data['message']['post_id']#params['post']
-    print("--------------------------")               #上のデータはどう確認する？  #jsonの値の取り方に注意。data['user_id']だけじゃ取れない。
-    #print(params['post']) #これ何？
+
+    #_text.html.erbで表示される内容に関係する。
+    Text.create! content: data['text']['message'], user_id: data['text']['user_id'], post_id: data['text']['post_id'], name: data['text']['name']   #params['post']
+         #上のデータはどう確認する？  #jsonの値の取り方に注意。data['user_id']だけじゃ取れない。
   end
 
-  # def set_message
-  #   @message = Message.find(params[:id])
+  # def set_text
+  #   @text = Text.find(params[:id])
   # end
 
   # # Only allow a list of trusted parameters through.
-  # def message_params
-  #   params.require(:message).permit(:content, :user_id, :post_id)
+  # def text_params
+  #   params.require(:text).permit(:content, :user_id, :post_id)
   # end
 
 end

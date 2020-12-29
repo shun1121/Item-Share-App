@@ -14,13 +14,16 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
-    # @profile = Profile.new
     @profile = Profile.find_or_create_by(:user_id => current_user.id)
     redirect_to edit_profile_url(@profile)
   end
 
   # GET /profiles/1/edit
   def edit
+    if @profile.user_id != current_user.id 
+      flash[:notice] = "他のユーザーのプロフィールは編集できません。"
+      redirect_to profiles_path
+    end
   end
 
   # POST /profiles
@@ -30,7 +33,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
+        format.html { redirect_to @profile, notice: 'プロフィールが更新されました。' }
         format.json { render :show, status: :created, location: @profile }
       else
         format.html { render :new }
@@ -44,7 +47,7 @@ class ProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to @profile, notice: 'プロフィールが更新されました。' }
         format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit }
@@ -56,10 +59,15 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1
   # DELETE /profiles/1.json
   def destroy
-    @profile.destroy
-    respond_to do |format|
-      format.html { redirect_to profiles_url, notice: 'Profile was successfully destroyed.' }
-      format.json { head :no_content }
+    if @profile.user_id != current_user.id
+      flash[:notice] = "他のユーザーのプロフィールは削除できません。"
+      redirect_to profiles_path
+    else
+      @profile.destroy
+      respond_to do |format|
+        format.html { redirect_to profiles_url, notice: 'プロフィールが削除されました。' }
+        format.json { head :no_content }
+      end
     end
   end
 

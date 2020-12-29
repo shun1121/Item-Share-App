@@ -1,24 +1,29 @@
-<p id="notice"><%= notice %></p>
+<hr>
+<br>
+<%# <p> %>
+  <%# <strong>ID:</strong> %>
+  <%# <%= @profile.user_id %> 
+<%# </p> %>
 
-<p>
-  <strong>User:</strong>
-  <%= @profile.user_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @profile.name %>
-</p>
-
-<p>
-  <strong>Thumbnail:</strong>
-  <%= @profile.thumbnail %>
-</p>
-
-<p>
-  <strong>Birthday:</strong>
-  <%= @profile.birthday %>
-</p>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<div class="container">
+  <div class="card border-0" style="text-align:center;">
+      <div>
+        <%= image_tag @profile.thumbnail.to_s, width: '30%', height: '50%' %>
+      </div>
+      <br><br>
+      <div class="row">
+          <p class="col-md-6" style="font-size:40px; text-align:right;">名前:</p>
+          <p class="col-md-6" style="font-size:40px; text-align:left;"><%= @profile.name %></p>
+      </div><br>
+      <div class="row">
+        <p class="col-md-6" style="font-size:40px; text-align:right;">誕生日:</p>
+        <p class="col-md-6" style="font-size:40px; text-align:left;"><%= @profile.birthday %></p>
+      </div>
+      <br>
+  </div>     
+</div>
+<br>
+<div style="text-align:center;">
+  <%= link_to '戻る', profiles_path, class: 'btn btn-light border text-primary' %>
+</div>
+<br><br>

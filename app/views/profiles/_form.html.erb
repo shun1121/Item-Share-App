@@ -11,27 +11,41 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+  <%# <div class="field"> %>
+    <%# <%= form.label :user_id %> 
+    <%# <%= form.number_field :user_id %> 
+  <%# </div> %>
+  <br>
+  <div class="form-group row field">
+    <div class="col-4 col-form-label">
+      <h5><%= form.label :名前 %>:</h5>
+    </div> 
+    <div class="col-8">
+      <%= form.text_field :name %>
+    </div> 
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group row field">
+    <div class="col-4 col-form-label">
+      <h5><%= form.label :画像 %>:</h5>
+    </div>  
+    <div class="col-8">
+      <%= form.file_field :thumbnail %>
+    </div>  
   </div>
 
-  <div class="field">
-    <%= form.label :thumbnail %>
-    <%= form.text_field :thumbnail %>
+  <div class="form-group row field">
+    <div class="col-4 col-form-label">
+      <h5><%= form.label :誕生日 %>:</h5>
+    </div>
+    <div class="col-8">
+      <%= form.date_select(:birthday, start_year:Time.now.year, end_year:1900) %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :birthday %>
-    <%= form.date_select :birthday %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group row actions">
+    <div class="offset-4 col-8">
+      <%= form.submit('更新', class: 'btn btn-primary') %>
+    </div>  
   </div>
 <% end %>

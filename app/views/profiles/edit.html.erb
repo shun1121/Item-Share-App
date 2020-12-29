@@ -1,6 +1,14 @@
-<h1>Editing Profile</h1>
-
-<%= render 'form', profile: @profile %>
-
-<%= link_to 'Show', @profile %> |
-<%= link_to 'Back', profiles_path %>
+<div style="float:right;">
+  <%= link_to '戻る', profiles_path, class: 'btn btn-light border text-primary' %>
+</div>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="card col-sm-5 mx-auto mt-5">
+      <div class="card-body">
+        <h1>プロフィール編集</h1>
+        <%= render 'form', profile: @profile %>
+      </div>
+    </div>    
+  </div>
+</div> 

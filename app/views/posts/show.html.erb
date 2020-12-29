@@ -1,44 +1,69 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @post.name %>
-</p>
-
-<p>
-  <strong>Thumbnail:</strong>
-  <%= @post.thumbnail %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @post.price %>
-</p>
-
-<p>
-  <strong>Introduction:</strong>
-  <%= @post.introduction %>
-</p>
-
-<h1>Chat room</h1>
-<div id='messages'>
-  <%# <%= @profile.use_id %> 
-  <%= render @messages %>
-  
-  <%# render @messagesとは、render partial: 'messages/message', collection: @messagesの略 %>
-  <%# メッセージ毎にmessagesフォルダの_message.html.erbというパーシャルが適用される %>
+<%# <p>
+  <strong>ユーザ:</strong>
+  <%= @post.user_id %> 
+<%# </p>  %> 
+<div style="float:right;">
+  <%= link_to '編集', edit_post_path(@post), class: 'btn btn-light border text-success' %> 
+  <%= link_to '戻る', posts_path, class: 'btn btn-light border text-primary' %>
 </div>
+<hr>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="card col-md-6 border-0">
+      <h2 style="text-align:center;">商品詳細</h2>
+      <br>
+      <div class="mx-auto">
+        <div class="card-body border pt-4">
+          <p style="padding-left:50px;">
+            <strong style="font-size:18px;">投稿者:</strong>
+            <span style="font-size:20px; padding-left:40px;"><%= @user_name.name %></span> 
+          </p> 
 
+          <% if @post.thumbnail? %>
+            <p style="text-align:center;">
+              <%= image_tag @post.thumbnail.to_s, :size =>'220x220' %>
+            </p>
+          <% end %>
 
-<%= label_tag :content, 'Say something:' %>
-<%# text_field_tag(テキストボックス名, 初期文字列, {オプション1, オプション2,,,}) %>        <%#=  ↓ current_user.idでいけた。  %>
-<%= text_field_tag :content, nil,  {:class => "", "data-behavior" => "post_speaker", "data-user_id" => @profile.user_id, "data-post_id" => @post.id} %>
-<%# この上のとこclass以下何やっとるん？ %>                                        <%#=  ↑ posts_controller.rbに@profile = Profile.find_by(:user_id => current_user.id)を作ることで"data-user_id" => @profile.user_idを実現   %>
-<%# inputタグの属性と値を書いている。data-behavior属性にpost_speakerという値を持たせてjsの$(document).on ...で指定している。 %>
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+          <p style="padding-left:50px;">
+            <strong style="font-size:18px;">商品名:</strong>
+            <span style="font-size:20px; padding-left:40px; padding-right:20px;"><%= @post.name %></span>
+          </p>
+
+          <p style="padding-left:50px;">
+            <strong style="font-size:18px;">価格:</strong>
+            <span style="font-size:20px; padding-left:55px;"><%= @post.price %></span>
+          </p>
+
+          <p style="padding-left:50px;">
+            <p style="font-size:18px; padding-left:50px; font-weight:bold;">商品紹介:</p>
+            <div style="padding-left:50px; padding-right:30px;">
+              <span style="font-size:20px;"><%= @post.introduction %></span>
+            </div>
+          </p>
+          <br>
+        </div>
+      </div>  
+    </div>     
+    <br>
+
+    <div class="offset-md-1 col-md-5 border" style="padding-left:40px; padding-right:40px">
+    <br>
+      <h2 style="text-align:center;">コメント欄</h2><br>
+      <%= label_tag :content, 'コメント :', class: "col-md-4" %><strong style="color:blue;">入力後にエンターを押してください。</strong>
+      <%# text_field_tag(テキストボックス名, 初期文字列, {オプション1, オプション2,,,}) %>        <%#=  ↓ current_user.id、あるいは "data-user_id" => @profile.user_id  %>
+      <%= text_area_tag :content, nil,  {:class => "col-md-12", "data-behavior" => "post_speaker", "data-user_id" => current_user.id, "data-post_id" => @post.id, "data-name" => @profile.name} %><br>
+      <%# この上のとこclass以下何やっとるん？ %>                                        <%#=  ↑ posts_controller.rbに@profile = Profile.find_by(:user_id => current_user.id)を作ることで"data-user_id" => @profile.user_idを実現   %>
+      <%# inputタグの属性と値を書いている。data-behavior属性にpost_speakerという値を持たせてjsの$(document).on ...で指定している。 %>
+      <br>
+      <div id='texts'>
+        <%= render @texts %>
+        <%# render @textsとは、render partial: 'texts/text', collection: @textsの略 %>
+        <%# メッセージ毎にtextsフォルダの_text.html.erbというパーシャルが適用される %>
+      </div>
+    </div>
+  </div>
+</div> 
+<br>
+<br>
