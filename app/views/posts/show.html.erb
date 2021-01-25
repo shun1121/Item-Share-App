@@ -2,19 +2,19 @@
   <strong>ユーザ:</strong>
   <%= @post.user_id %> 
 <%# </p>  %> 
-<div style="float:right;">
-  <%= link_to '編集', edit_post_path(@post), class: 'btn btn-light border text-success' %> 
-  <%= link_to '戻る', posts_path, class: 'btn btn-light border text-primary' %>
+<div class="mt-4" style="float:right;">
+  <%= link_to '編集', edit_post_path(@post), class: 'btn btn-light border-primary text-primary font-weight-bold' %> 
+  <%= link_to '戻る', posts_path, class: 'btn btn-light border-primary text-primary font-weight-bold' %>
 </div>
 <hr>
 <br>
 <div class="container">
   <div class="row">
-    <div class="card col-md-6 border-0">
-      <h2 style="text-align:center;">商品詳細</h2>
+    <div class="card col-lg-6 border-0">
+      <h2 class="pt-3 font-weight-bold" style="text-align:center;">商品詳細</h2>
       <br>
       <div class="mx-auto">
-        <div class="card-body border pt-4">
+        <div class="card-body pt-4">
           <p style="padding-left:50px;">
             <strong style="font-size:18px;">投稿者:</strong>
             <span style="font-size:20px; padding-left:40px;"><%= @user_name.name %></span> 
@@ -48,16 +48,18 @@
     </div>     
     <br>
 
-    <div class="offset-md-1 col-md-5 border" style="padding-left:40px; padding-right:40px">
+    <div class="offset-lg-1 col-lg-5 border" style="background-color:white; padding-left:40px; padding-right:40px">
     <br>
-      <h2 style="text-align:center;">コメント欄</h2><br>
-      <%= label_tag :content, 'コメント :', class: "col-md-4" %><strong style="color:blue;">入力後にエンターを押してください。</strong>
-      <%# text_field_tag(テキストボックス名, 初期文字列, {オプション1, オプション2,,,}) %>        <%#=  ↓ current_user.id、あるいは "data-user_id" => @profile.user_id  %>
-      <%= text_area_tag :content, nil,  {:class => "col-md-12", "data-behavior" => "post_speaker", "data-user_id" => current_user.id, "data-post_id" => @post.id, "data-name" => @profile.name} %><br>
-      <%# この上のとこclass以下何やっとるん？ %>                                        <%#=  ↑ posts_controller.rbに@profile = Profile.find_by(:user_id => current_user.id)を作ることで"data-user_id" => @profile.user_idを実現   %>
-      <%# inputタグの属性と値を書いている。data-behavior属性にpost_speakerという値を持たせてjsの$(document).on ...で指定している。 %>
-      <br>
-      <div id='texts'>
+      <h2 class="font-weight-bold" style="text-align:center;">コメント欄</h2><br>
+      <div class="row">
+        <%= label_tag :content, 'コメント:', class: "col-md-4 col-xl-3 pl-0" %><strong class="col-lg-8 col-xl-9" style="color:blue;">入力後にエンターを押してください。</strong>
+        <%# text_field_tag(テキストボックス名, 初期文字列, {オプション1, オプション2,,,}) %>        <%#=  ↓ current_user.id、あるいは "data-user_id" => @profile.user_id  %>
+        <%= text_area_tag :content, nil,  {:class => "col-md-12", "data-behavior" => "post_speaker", "data-user_id" => current_user.id, "data-post_id" => @post.id, "data-name" => @profile.name} %><br>  <%# コメントした内容に属性を持たせている。これでpost_channel.jsでエンターされたときにobjに値を入れられる。 %>
+        <%# この上のとこclass以下何やっとるん？ %>                                        <%#=  ↑ posts_controller.rbに@profile = Profile.find_by(:user_id => current_user.id)を作ることで"data-user_id" => @profile.user_idを実現   %>
+        <%# inputタグの属性と値を書いている。data-behavior属性にpost_speakerという値を持たせてjsの$(document).on ...で指定している。 %>
+        <br>
+      </div>  
+      <div class="mt-4" id='texts'>
         <%= render @texts %>
         <%# render @textsとは、render partial: 'texts/text', collection: @textsの略 %>
         <%# メッセージ毎にtextsフォルダの_text.html.erbというパーシャルが適用される %>

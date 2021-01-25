@@ -19,7 +19,7 @@ const chatChannel = consumer.subscriptions.create("PostChannel", {
   },
 
   speak: function(text) {
-  //perform メソッドにより、フロントのデータをサーバーに送信することができます
+  //perform メソッドにより、フロントのデータをサーバーに送信することができます。サーバサイドのspeakアクションにtextパラメータを渡す。
   //第1引数にサーバー側のメソッド名、第2引数に送信するデータを指定
   //console.log(text)
   // console.log("????????????????????????????")
@@ -54,3 +54,5 @@ $(document).on('keypress', '[data-behavior~=post_speaker]', function(event) {
     return event.preventDefault();
   }
 });
+
+//ここでいろいろな属性を持ったコメントが来ている。その属性をobjに代入した。

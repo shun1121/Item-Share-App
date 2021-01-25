@@ -1,10 +1,10 @@
-<div style="float:right;"><%= link_to '戻る', profiles_path, class: 'btn btn-light border text-primary' %></div>
-<hr>
+<div class="pt-0 mt-4" style="float:right; margin-right:10px"><%= link_to '戻る', posts_path, class: 'btn btn-light border-primary text-primary font-weight-bold' %></div>
+<hr style="height:4px; background-color:#49b99e; border:none;">
 <div class="container">
   <div class="row">
-    <div class="card col-sm-5 mx-auto mt-5">
+    <div class="card col-xs-7 col-lg-7 col-xl-6 mx-auto mt-3">
       <div class="card-body">
-        <h1 style="text-align:center;">商品投稿</h1>
+        <h1 class=" font-weight-bold" style="text-align:center;">商品投稿</h1>
         <%= render 'form', post: @post %>
       </div>
     </div>    

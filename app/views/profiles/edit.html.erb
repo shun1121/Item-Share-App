@@ -1,12 +1,12 @@
-<div style="float:right;">
-  <%= link_to '戻る', profiles_path, class: 'btn btn-light border text-primary' %>
+<div class="mt-4" style="float:right;">
+  <%= link_to '戻る', profiles_path, class: 'btn btn-light border-primary text-primary font-weight-bold' %>
 </div>
-<hr>
+<hr style="height:4px; background-color:#49b99e; border:none;">
 <div class="container">
   <div class="row">
-    <div class="card col-sm-5 mx-auto mt-5">
+    <div class="card col-xs-6 col-sm-11 col-md-8 col-lg-7 col-xl-6 mx-auto mt-5">
       <div class="card-body">
-        <h1>プロフィール編集</h1>
+        <h1 style="text-align:center; font-weight-bold">プロフィール編集</h1>
         <%= render 'form', profile: @profile %>
       </div>
     </div>    

@@ -1,27 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="card col-sm-5 mx-auto mt-5">
+    <div class="card col-xs-6 col-sm-7 col-md-7 col-lg-7 col-xl-5 mx-auto mt-5">
       <div class="card-body">
-        <h2 class="mt-1 mb-3">ログイン</h2>
+        <h2 class="mt-1 mb-3" style="text-align:center;">ログイン</h2>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="form-group field">
+          <div class="form-group mt-4 field">
             <%= f.label :メールアドレス, :class => "form-label" %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control" %>
           </div>
 
-          <div class="form-group field">
+          <div class="form-group mt-4 field">
             <%= f.label :パスワード, :class => "form-label" %><br />
             <%= f.password_field :password, autocomplete: "current-password", :class => "form-control" %>
           </div>
 
           <% if devise_mapping.rememberable? %>
-            <div class="form-check field">
+            <div class="form-check mt-4 field">
               <%= f.check_box :remember_me, :class => "form-check-input" %>
               <%= f.label :remember_me, "ログイン内容を保存", :class => "form-check-label" %>
             </div>
           <% end %>
 
-          <div class="actions">
+          <div class="actions mt-4">
             <%= f.submit "ログイン", :class => "btn btn-primary btn-block" %>
           </div>
         <% end %>

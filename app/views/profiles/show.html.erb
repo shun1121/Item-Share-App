@@ -1,4 +1,4 @@
-<hr>
+<hr style="height:4px; background-color:#49b99e; border:none;">
 <br>
 <%# <p> %>
   <%# <strong>ID:</strong> %>
@@ -6,24 +6,28 @@
 <%# </p> %>
 
 <div class="container">
-  <div class="card border-0" style="text-align:center;">
+  <div class="card border-0" style="background-color:#f5f5f5; text-align:center;">
       <div>
-        <%= image_tag @profile.thumbnail.to_s, width: '30%', height: '50%' %>
+        <%= image_tag @profile.thumbnail.to_s, width: '45%', height: '65%' %>
       </div>
       <br><br>
-      <div class="row">
-          <p class="col-md-6" style="font-size:40px; text-align:right;">名前:</p>
-          <p class="col-md-6" style="font-size:40px; text-align:left;"><%= @profile.name %></p>
+      <div class="row border-bottom pb-2">
+        <div class="col-md-2 col-sm-2 col-xs-3 col-xl-3 col-lg-3"></div>
+        <div class="col-md-3 col-sm-4 col-xs-3 col-xl-3 col-lg-3" style="font-size:40px;">名前:</div>
+        <div class="col-md-4 col-sm-4 col-xs-3 col-xl-3 col-lg-3" style="font-size:40px;"><%= @profile.name %></div>
+        <div class="col-md-3 col-sm-2 col-xs-3 col-xl-3 col-lg-3"></div>
       </div><br>
-      <div class="row">
-        <p class="col-md-6" style="font-size:40px; text-align:right;">誕生日:</p>
-        <p class="col-md-6" style="font-size:40px; text-align:left;"><%= @profile.birthday %></p>
+      <div class="row border-bottom pb-2">
+        <div class="col-md-2 col-sm-1 col-lg-3 col-xl-3"></div>
+        <div class="col-md-3 col-sm-4 col-lg-3 col-xl-3" style="font-size:40px;">誕生日:</div>
+        <div class="col-md-4 col-sm-5 col-lg-3 col-xl-3" style="font-size:40px;"><%= @profile.birthday %></div>
+        <div class="col-md-3 col-sm-2 col-lg-3 col-xl-3"></div>
       </div>
       <br>
   </div>     
 </div>
 <br>
 <div style="text-align:center;">
-  <%= link_to '戻る', profiles_path, class: 'btn btn-light border text-primary' %>
+  <%= link_to '戻る', profiles_path, class: 'btn btn-light border-primary text-primary font-weight-bold' %>
 </div>
 <br><br>

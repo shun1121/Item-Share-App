@@ -20,44 +20,44 @@
   </div>
   
   <div class="form-group row field">
-    <div class="col-4 col-form-label">
-      <h5><%= form.label :名前 %>:</h5>
+    <div class="col-3 col-form-label">
+      <h5 class=" font-weight-bold"><%= form.label :名前 %>:</h5>
     </div>  
-    <div class="col-8">
+    <div class="col-9">
       <%= form.text_field :name, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group row field">
-    <div class="col-4 col-form-label">
-      <h5><%= form.label :写真 %>:</h5>
+    <div class="col-3 col-form-label">
+      <h5 class=" font-weight-bold"><%= form.label :写真 %>:</h5>
     </div>  
-    <div class="col-8">
+    <div class="col-9">
       <%= form.file_field :thumbnail %>
     </div>
   </div>
 
   <div class="form-group row field">
-    <div class="col-4 col-form-label">
-      <h5><%= form.label :価格 %>:</h5>
+    <div class="col-3 col-form-label">
+      <h5 class=" font-weight-bold"><%= form.label :価格 %>:</h5>
     </div>  
-    <div class="col-8">
+    <div class="col-9">
       <%= form.text_field :price, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group row field">
-    <div class="col-4 col-form-label">
-      <h5><%= form.label :商品説明 %>:</h5>
+    <div class="col-3 col-form-label">
+      <h5 class=" font-weight-bold"><%= form.label :商品説明 %>:</h5>
     </div>  
-    <div class="col-8">
+    <div class="col-9">
       <%= form.text_area :introduction, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group row actions">
-    <div class="offset-4 col-8">
-      <%= form.submit('投稿', class: 'btn btn-primary')  %>
+    <div class="offset-5 col-7 mt-3">
+      <%= form.submit('投稿', class: 'btn btn-primary border-primary text-white font-weight-bold')  %>
     </div>  
   </div>
 <% end %>

@@ -1,4 +1,6 @@
 <div class='text'>
+<%# post_channel.rbのText.create! 以下で指定したキーに値が入っている。  例）content: data['text']['message'] → contentには、post_channel.jsで作ったデータ（obj）が入っている %>
+<%# textはpost_channel.jsで設定したやつ？ %>
   <p><strong><%= text.name %></strong> - <span style="margin-left:10px;"><%= text.created_at %></span></p>
   <h4><%= text.content %></h4><br>
 </div>

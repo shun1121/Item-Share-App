@@ -9,12 +9,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <div class="container">
+  <body style="background-color:#f5f5f5;">
+    <div class="container" style="padding-left:0; padding-right:0;">
       <p class="notice" style="text-align:center; color:blue; margin-top:40px;"><%= notice %></p>
       <p class="alert" style="text-align:center; color:red"><%= alert %></p>
       <% if user_signed_in? %>
-        <%= link_to image_tag("flexsens_logo.png", width:'170px', height:'70px'), profiles_path %>
+        <%= link_to image_tag("logo.png", width:'170px', height:'70px'), profiles_path %>
       <% end %>
       <%= yield %>
     </div>  

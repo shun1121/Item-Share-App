@@ -1,10 +1,10 @@
-<span style="float:right"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-danger text-white border-danger' %></span>
-<hr>
+<span class="mt-4" style="float:right"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-danger text-white border-danger' %></span>
+<hr style="height:4px; background-color:#49b99e; border:none;">
 <br>
-<h1 style="text-align:center;">商品一覧</h1><br>
+<h1 class="font-weight-bold" style="text-align:center;">商品一覧</h1><br>
 <div style="text-align:right; margin-bottom:30px;">
-  <%= link_to '商品投稿', new_post_path, class: 'btn btn-light border text-primary' %>
-  <%= link_to '戻る', profiles_path, class: 'btn btn-light border text-primary' %>
+  <%= link_to '商品投稿', new_post_path, class: 'btn btn-light border-primary text-primary font-weight-bold' %>
+  <%= link_to '戻る', profiles_path, class: 'btn btn-light border-primary text-primary font-weight-bold' %>
 </div>
 
 <div class="container">
@@ -18,7 +18,7 @@
           <div class="card-body" style="text-align:center;">
             <h4><%= post.name %></h4>
             <span class="rounded" style="background-color:gray; color:white; font-size:30px; padding-left:5px; padding-right:5px;"><%= post.price %></span>
-            <p style="margin:15px;"><%= link_to '詳細', post, class: 'btn btn-light text-info border-info' %><%= link_to '編集', edit_post_path(post), class: 'btn btn-light text-success border-success' %><%= link_to '削除', post, method: :delete, data: { confirm: '削除します。よろしいですか？' }, class: 'btn btn-light text-danger border-danger' %></p>
+            <p style="margin:15px;"><%= link_to '詳細', post, class: 'btn btn-light text-dark border-dark font-weight-bold' %><%= link_to '編集', edit_post_path(post), class: 'btn btn-light text-dark border-dark font-weight-bold' %><%= link_to '削除', post, method: :delete, data: { confirm: '削除します。よろしいですか？' }, class: 'btn btn-light text-dark border-dark font-weight-bold' %></p>
           </div>
         </div>
       </div>
